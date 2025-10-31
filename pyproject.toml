@@ -10,6 +10,7 @@ dependencies = [
     "langchain-ollama>=1.0.0",
     "langchain-text-splitters>=1.0.0",
     "llama-cloud-services>=0.6.76",
+    "pymupdf>=1.26.5",
     "python-dotenv>=1.2.1",
     "pyyaml>=6.0.3",
 ]

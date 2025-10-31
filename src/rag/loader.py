@@ -2,8 +2,25 @@
 
 import os
 import uuid
+import hashlib
+
 from llama_cloud_services import LlamaParse
 from dotenv import load_dotenv
+import pymupdf
+
+def load_document(file_path: str):
+    if ".pdf" in file_path:
+        return _load_pdf(file_path=file_path)
+
+def _load_pdf(file_path: str):
+    doc = pymupdf.open(file_path)
+    return doc
+
+def get_doc_id(file_path: str):
+    doc = load_document(file_path=file_path)
+    text = "".join(page.get_text() for page in doc)
+
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 
 def parse_pdf_to_md(file_path: str): # <-- Parameter is the full path
     """
