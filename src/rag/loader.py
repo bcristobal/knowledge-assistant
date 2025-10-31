@@ -19,6 +19,7 @@ def _load_pdf(file_path: str):
 def get_doc_id(file_path: str):
     doc = load_document(file_path=file_path)
     text = "".join(page.get_text() for page in doc)
+    doc.close()
 
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 

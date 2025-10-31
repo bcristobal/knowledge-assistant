@@ -6,7 +6,6 @@ from chromadb.api.models.Collection import Collection
 from dotenv import load_dotenv
 from typing import Optional, List
 import os
-import hashlib
 
 from embeddings import create_embedding_function
 from loader import parse_pdf_to_md, get_doc_id
