@@ -1,0 +1,18 @@
+vectorstore:
+  type: vectordb
+  settings:
+    path: ./data/vectordb
+    chunk_size: 500
+    chunk_overlap: 50
+    top_k_results: 5
+    similarity_threshold: 0.7
+    collections:
+      - name: documents
+        metadata:
+          description: "A collection of local documents"
+          source: local_filesystem
+      - name: code_snippets
+        metadata:
+          description: "A collection of code snippets"
+          source: github_repos
+

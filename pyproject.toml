@@ -1,0 +1,15 @@
+[project]
+name = "knowledge-assistant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.2.2",
+    "langchain-community>=0.4.1",
+    "langchain-ollama>=1.0.0",
+    "langchain-text-splitters>=1.0.0",
+    "llama-cloud-services>=0.6.76",
+    "python-dotenv>=1.2.1",
+    "pyyaml>=6.0.3",
+]

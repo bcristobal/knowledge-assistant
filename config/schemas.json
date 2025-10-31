@@ -1,0 +1,97 @@
+{
+    "router_output": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "required": ["query_type", "needs_rag", "complexity"],
+        "properties": {
+        "query_type": {
+            "type": "string",
+            "enum": ["simple_qa", "comparison", "code_generation", "summary"]
+        },
+        "needs_rag": {
+            "type": "boolean"
+        },
+        "complexity": {
+            "type": "string",
+            "enum": ["low", "medium", "high"]
+        },
+        "keywords": {
+            "type": "array",
+            "items": {
+            "type": "string"
+            }
+        }
+        }
+    },
+    
+    "synthesis_output": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "required": ["answer", "sources", "confidence"],
+        "properties": {
+        "answer": {
+            "type": "string",
+            "minLength": 10
+        },
+        "sources": {
+            "type": "array",
+            "items": {
+            "type": "object",
+            "required": ["filename", "page"],
+            "properties": {
+                "filename": {
+                "type": "string"
+                },
+                "page": {
+                "type": "integer",
+                "minimum": 1
+                },
+                "relevance": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+                }
+            }
+            },
+            "minItems": 1
+        },
+        "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+        },
+        "additional_notes": {
+            "type": "string"
+        }
+        }
+    },
+    
+    "document_metadata": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "required": ["filename", "type", "processed_date"],
+        "properties": {
+        "filename": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["pdf", "markdown", "text", "code"]
+        },
+        "processed_date": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "num_chunks": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+            "type": "string"
+            }
+        }
+        }
+    }
+}
